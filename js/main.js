@@ -92,7 +92,7 @@ getELE("btnMin").onclick = function () {
 
 // Last Postive number
 function lastNumber() {
-    var last = []
+    var last
     for (var i = mang.length - 1; i >= 0; i--) {
         if (mang[i] % 2 == 0) {
             last = mang[i]
@@ -112,9 +112,9 @@ function swapNumber() {
     var number1 = getELE("number1").value
     var number2 = getELE("number2").value
     var tam = []
-    tam =  mang[number1-1]
-    mang[number1-1] = mang[number2-1]
-    mang[number2-1] = tam
+    tam = mang[number1 - 1]
+    mang[number1 - 1] = mang[number2 - 1]
+    mang[number2 - 1] = tam
     getELE("resultSwap").innerHTML = "Mảng sau khi đổi: " + mang
 
 }
@@ -122,3 +122,97 @@ function swapNumber() {
 getELE("btnSwap").onclick = function () {
     swapNumber()
 }
+
+// Prime number
+function primeNumber() {
+    var prime = 0
+    for (var i = 0; i < mang.length; i++) {
+        if (mang[i] < 2) {
+            prime = -1
+            getELE("resultPrime").innerHTML = prime
+        } else if (mang[i] == 2) {
+            prime = mang[i]
+            getELE("resultPrime").innerHTML = prime
+            break
+        }
+        else if (mang[i] % 2 !== 0) {
+            prime = mang[i]
+            getELE("resultPrime").innerHTML = prime
+            break
+        }
+    }
+
+
+}
+
+getELE("btnPrime").onclick = function () {
+    primeNumber()
+}
+
+// Integer number
+var mangnew = []
+function addNumber1() {
+
+    var number3 = getELE("number3").value
+    if (number3 || number3) {
+        mangnew.push(number3)
+        getELE("resultInteger").innerHTML = mangnew
+    } else {
+        alert('Nhập số')
+    }
+}
+
+getELE("btnInteger").onclick = function () {
+    addNumber1()
+    getELE("number3").value = ''
+    getELE("number3").focus()
+}
+
+function integerNumber() {
+    var dem = 0
+    for (var i = 0; i < mangnew.length; i++) {
+
+        if (Number.isInteger(Number(mangnew[i]))) {
+            dem++
+        }
+    }
+    getELE("resultInte").innerHTML = dem
+
+}
+
+getELE("btnInte").onclick = function () {
+    integerNumber()
+}
+
+// Comparative number 
+function ComparaNumber() {
+    var nguyenduong = 0
+    var nguyenam = 0
+    for (var i = 0; i < mang.length; i++) {
+        if (mang[i] > 0) {
+            nguyenduong++
+        } else {
+            nguyenam++
+        }
+    }
+
+    if (nguyenduong > nguyenam) {
+        getELE("resultCompa").innerHTML = "Nguyên dương lớn hơn nguyên âm"
+        
+    } else if (nguyenduong < nguyenam) {
+        getELE("resultCompa").innerHTML = "Nguyên dương nhỏ hơn nguyên âm"
+
+    } else{
+        getELE("resultCompa").innerHTML = "Nguyên dương bằng nguyên âm"
+
+    }
+
+
+
+
+}
+
+getELE("btnCompa").onclick = function () {
+    ComparaNumber()
+}
+
